@@ -1,21 +1,21 @@
 <?php
 
   $ch = curl_init();
-  /* URL */
+  // URL
   $url = 'http://apis.data.go.kr/1360000/WthrWrnInfoService/getWthrWrnList';
-  /* Service Key */
+  // Service Key
   $queryParams = '?' . urlencode('serviceKey') . '=' . $env['SERVICE_KEY'];
-  /* 페이지 번호 */
+  // 페이지 번호
   $queryParams .= '&' . urlencode('pageNo') . '=' . urlencode(isset($_GET['pageNo']) ? $_GET['pageNo'] : 1);
-  /* 한 페이지 결과 수 */
+  // 한 페이지 결과 수
   $queryParams .= '&' . urlencode('numOfRows') . '=' . urlencode(strval($numOfRows));
-  /* 데이터 타입(XML/JSON) */
+  // 데이터 타입(XML/JSON)
   $queryParams .= '&' . urlencode('dataType') . '=' . urlencode('JSON');
-  /* 지점코드 */
+  // 지점코드
   $queryParams .= '&' . urlencode('stnId') . '=' . urlencode(isset($_GET['stnId']) ? $_GET['stnId'] : $stnId);
-  /* 시작 발표시각(년월일시분) */
+  // 시작 발표시각(년월일시분)
   $queryParams .= '&' . urlencode('fromTmFc') . '=' . urlencode(isset($_GET['fromTmFc']) ? $_GET['fromTmFc'] : $fromTmFc);
-  /* 종료 발표시각(년월일시분) */
+  // 종료 발표시각(년월일시분)
   $queryParams .= '&' . urlencode('toTmFc') . '=' . urlencode(isset($_GET['toTmFc']) ? $_GET['toTmFc'] : $toTmFc);
 
   curl_setopt($ch, CURLOPT_URL, ($url . $queryParams));
